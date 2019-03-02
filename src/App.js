@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
 
 const Message = ({ text }) =>
-  text
+  <>
+  <div className="message message-received">{text}</div>
+  <div className="message message-sent">{text}</div>
+  </>
 
 const Messages = ({ messages }) =>
-  <div>
+  <div className="messages">
     {messages.map(({ text, id }) =>
       <Message
         text={text}
@@ -21,13 +24,26 @@ Messages.defaultProps = {
   }]
 }
 
-const Chat = () => {
+const ChatInput = () => {
   const [message, sendMessage] = useState('')
   return (
     <div>
-      <Messages />
-      <input onChange={({ target: { value }}) => sendMessage(value)} value={message} />
+      <div
+        className="chat__input"
+        contentEditable
+        onChange={({ target: { value }}) => sendMessage(value)}
+        value={message}
+      />
       <button onClick={() => sendMessage('')}>Send</button>
+    </div>
+  )
+}
+
+const Chat = () => {
+  return (
+    <div className="chat">
+      <Messages />
+      <ChatInput />
     </div>
   )
 }
