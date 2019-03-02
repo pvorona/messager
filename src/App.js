@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 
 const Message = ({ text }) =>
   text
@@ -21,30 +21,15 @@ Messages.defaultProps = {
   }]
 }
 
-class Chat extends Component {
-  state = {
-    message: '',
-  }
-
-  onMessageChange = ({ target: { value }}) => {
-    this.setState({ message: value })
-  }
-
-  sendMessage = () => {
-    this.setState({ message: '' })
-  }
-
-  render () {
-    const { message } = this.state
-
-    return (
-      <div>
-        <Messages />
-        <input onChange={this.onMessageChange} value={message} />
-        <button onClick={this.sendMessage}>Send</button>
-      </div>
-    )
-  }
+const Chat = () => {
+  const [message, sendMessage] = useState('')
+  return (
+    <div>
+      <Messages />
+      <input onChange={({ target: { value }}) => sendMessage(value)} value={message} />
+      <button onClick={() => sendMessage('')}>Send</button>
+    </div>
+  )
 }
 
 const Dialog = ({ id, message }) =>
@@ -52,23 +37,16 @@ const Dialog = ({ id, message }) =>
     {message}
   </div>
 
-class DialogList extends Component {
-  render () {
-    const { dialogs } = this.props
-
-    return (
-      <div className="dialog-list">
-        {dialogs.map(({ id, message }) =>
-          <Dialog
-            id={id}
-            message={message}
-            key={id}
-          />
-        )}
-      </div>
-    )
-  }
-}
+const DialogList = ({ dialogs }) =>
+  <div className="dialog-list">
+    {dialogs.map(({ id, message }) =>
+      <Dialog
+        id={id}
+        message={message}
+        key={id}
+      />
+    )}
+  </div>
 
 DialogList.defaultProps = {
   dialogs: [{
@@ -80,13 +58,10 @@ DialogList.defaultProps = {
   }],
 }
 
-class App extends Component {
-  render() {
-    return (
-      // <DialogList />
-      <Chat />
-    )
-  }
-}
+const App = () =>
+  <>
+    <DialogList />
+    <Chat />
+  </>
 
 export default App;
