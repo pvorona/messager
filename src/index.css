@@ -15,7 +15,8 @@ body {
 
 .dialog-list {
     width: 25%;
-    background-color: hsla(0, 7%, 90%, 1);
+    background-color: #edeef0;;
+    /*background-color: hsla(0, 7%, 90%, 1);*/
     box-shadow: 0 0 35px #00000073;
     padding: 20px 0;
 }
@@ -28,7 +29,8 @@ body {
 }
 
 .dialog:hover {
-    background: #cac9c9;
+    background: #e1e5eb;;
+    /*background: #cac9c9;*/
 }
 
 .dialog__image {
@@ -44,13 +46,15 @@ body {
 }
 
 .dialog__author {
-    font-weight: bold;
+    font-weight: 600;
     color: #000000c7;
+    color: #285473;
     margin-bottom: 5px;
 }
 
 .dialog__message {
     color: #5d5d5d;
+    color: #939699;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -67,7 +71,10 @@ body {
     border: 1px solid #00000040;
     border-radius: 5px;
     outline: none;
-    padding: 10px 15px;
+    padding: 10px 80px 10px 15px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 13px;
 }
 
 .messages {
@@ -81,7 +88,8 @@ body {
 }
 
 .message-received {
-    background-color: #8ab3f1ad;
+    background-color: hsla(214, 95%, 88%, 0.68);
+    /*background-color: #8ab3f1ad;*/
     float: left;
     border-radius: 10px 10px 10px 0;
 }
@@ -89,5 +97,22 @@ body {
 .message-sent {
     float: right;
     border-radius: 10px 10px 0 10px;
-    background: red
+    background: #edeef0;
+    /*background: #e7e4e4;*/
+}
+
+.chat__input-container {
+    position: relative;
+}
+
+.chat__input-button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    border-radius: 0 5px 5px 0;
+    outline: none;
+    background: #4a76a8;
+    color: white;
+    padding: 0 20px;
 }
