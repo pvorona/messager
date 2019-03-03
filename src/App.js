@@ -95,8 +95,8 @@ DialogList.defaultProps = {
   }, {
     id: 2,
     message: 'That was really nice weekend, we should definitely repeat it on the next week!',
-    userName: 'Robbie Williamson',
-    imgUrl: 'https://randomuser.me/api/portraits/men/49.jpg',
+    userName: 'Jackie Chan',
+    imgUrl: 'https://randomuser.me/api/portraits/men/50.jpg',
   }],
 }
 
