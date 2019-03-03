@@ -65,6 +65,7 @@ body {
     width: 75%;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 
 .chat__input {
@@ -86,6 +87,9 @@ body {
     max-width: 60%;
     clear: both;
     margin-bottom: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
 }
 
 .message-received {
@@ -107,6 +111,7 @@ body {
 }
 
 .chat__input-button {
+    border-color: #4a76a8;
     font-size: 16px;
     position: absolute;
     right: 0;

@@ -14,6 +14,7 @@ const MessagesComponent = ({ messages }) =>
     {messages.map(({ id, ...message }) =>
       <Message
         key={id}
+        id={id}
         {...message}
       />
     )}
