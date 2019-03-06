@@ -1,33 +1,31 @@
-import React, { useState } from 'react'
-import { connect } from 'react-redux'
-import { addMessage } from './actions'
+import React, { useContext, useState } from 'react'
+import { AppContext } from './App'
 
 const Message = ({ text, received }) =>
-  <div
-    className={`message ${received ? 'message-received' : 'message-sent'}`}
-  >
+  <div className={`message ${received ? 'message-received' : 'message-sent'}`}>
     {text}
   </div>
 
-const MessagesComponent = ({ messages }) =>
-  <div className="messages">
-    {messages.map(({ id, ...message }) =>
-      <Message
-        key={id}
-        id={id}
-        {...message}
-      />
-    )}
-  </div>
+const Messages = () => {
+  const { state } = useContext(AppContext)
+  const messages = state.messagesByChatId[state.activeChatId]
 
-export const Messages = connect(
-  state => ({
-    messages: state.messagesByChatId[state.activeChatId],
-  })
-)(MessagesComponent)
+  return (
+    <div className="messages">
+      {messages.map(({ id, ...message }) =>
+        <Message
+          key={id}
+          id={id}
+          {...message}
+        />
+      )}
+    </div>
+  )
+}
 
-const ChatInputComponent = ({ addMessage }) => {
+const ChatInput = () => {
   const [message, setMessage] = useState('')
+  const { actions: { addMessage } } = useContext(AppContext)
 
   function submit () {
     addMessage(message)
@@ -60,11 +58,6 @@ const ChatInputComponent = ({ addMessage }) => {
     </div>
   )
 }
-
-const ChatInput = connect(
-  undefined,
-  { addMessage },
-)(ChatInputComponent)
 
 export const Chat = () => {
   return (
