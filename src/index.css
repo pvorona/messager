@@ -80,6 +80,7 @@ body {
 
 .messages {
     height: 100%;
+    overflow: auto;
 }
 
 .message {
